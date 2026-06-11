@@ -10,7 +10,7 @@ def main():
     text = get_book_text(book_path)
     word_count = count_words(text)
     char_counts = count_char(text.lower())
-    sorted_counts = sort_entries(char_counts)
+    sorted_counts = chars_dict_to_sorted_list(char_counts)
     print_report(book_path, word_count, sorted_counts)
 
 def get_book_text(path):
@@ -23,9 +23,9 @@ def print_report(book_path, word_count, sorted_counts):
     print("----------- Word Count ----------")
     print(f"Found {word_count} total words")
     print("--------- Character Count -------")
-    for counter in sorted_counts:
-        if counter["char"].isalpha():
-            print(f"{counter["char"]}: {counter["count"]}")
+    for count in sorted_counts:
+        if count[0].isalpha():
+            print(f"('{count[0]}', {count[1]})")
     print("============= END ===============")
 
 main()

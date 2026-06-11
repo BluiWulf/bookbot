@@ -11,8 +11,8 @@ def count_char(text):
             char_counts[char] = char_counts[char] + 1
     return char_counts
 
-def sort_on(dict):
-    return dict["count"]
+def sort_on(count: tuple[str, int]) -> int:
+    return count[1]
 
 def sort_entries(char_counts):
     sorted_list = []
@@ -20,4 +20,10 @@ def sort_entries(char_counts):
         sorted_list.append({"char": char, "count": char_counts[char]})
     sorted_list.sort(reverse=True, key=sort_on)
     return sorted_list
-    
+
+def chars_dict_to_sorted_list(counts: dict[str, int]) -> list[tuple[str, int]]:
+    counts_list = []
+    for key, val in counts.items():
+        counts_list.append((key, val))
+    sorted_counts = sorted(counts_list, reverse=True, key=sort_on)
+    return sorted_counts
